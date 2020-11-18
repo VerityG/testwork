@@ -35,6 +35,6 @@ if r.ok:
         work = div.get('data-shop-mode1') + div.get('data-shop-mode2')
         data_info.append({'address': address, 'location': f'{location1}, {location2}', 'name': name, 'phones': phone,
                           'working_hours': work})
-    h = codecs.open('../data_mebel.json', 'w', 'utf-8')
+    h = codecs.open('data_mebel.json', 'w', 'utf-8')
     h.write(json.dumps(data_info, indent=2, ensure_ascii=False))
     h.close()

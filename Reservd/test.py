@@ -35,15 +35,10 @@ def urls(x):
 url = 'https://www.reserved.com/ru/ru/new-in/men'
 r = requests.get(url, headers=headers[randint(0, 2)])
 if r.ok:
-    print(r)
     urls = urls(r)
     data_info = []
     for i in urls:
         r = requests.get(i, headers=headers[randint(0, 2)])
-        h = codecs.open('text.html', 'w', 'utf-8')
-        h.write(r.text)
-        h.close()
-        a = 1
         if r.ok:
             soup = BeautifulSoup(r.content, 'html.parser')
             h = soup.find('meta', attrs={'property': 'og:description'})
