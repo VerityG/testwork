@@ -33,7 +33,7 @@ def urls(x):
     return url_list
 
 
-url = 'https://www.reserved.com/ru/ru/man/clothes/shirts'
+url = 'https://www.reserved.com/ru/ru/man/clothes/jeans'
 r = requests.get(url, headers=headers[randint(0, 2)])
 if r.ok:
     urls = urls(r)
@@ -42,6 +42,7 @@ if r.ok:
         options = webdriver.ChromeOptions()
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--incognito')
+        options.add_argument('--headless')
         driver = webdriver.Chrome(options=options)
         driver.get(i)
         page_source = driver.page_source
@@ -58,6 +59,6 @@ if r.ok:
         img = soup.find('div', {'class': 'swipe gallery-swipe'}).find('img').get('src')
         data_info.append({'id': id, 'name': name, 'price': price,'currency': currency, 'image': img, 'productlink': i,
                           'brand': 'Reserved','color': color})
-    h = codecs.open('data.json', 'w', 'utf-8')
+    h = codecs.open('data_jeans.json', 'w', 'utf-8')
     h.write(json.dumps(data_info, indent=2, ensure_ascii=False))
     h.close()
